@@ -1,0 +1,489 @@
+/*
+ *
+ *
+ *
+ * @version 3.1 eng
+ */
+// =======================================================================//
+// AUTOSPRITES TOOLS                                                      //
+// =======================================================================//
+
+// IMAGE SPRITES
+// unncomment if you use png/jpg sprites (gulp sprites) and paste icon like <i class="icon icon-name"></i>
+// @import 'img-sprite';
+
+.icon {
+    display: inline-block ;
+    background-repeat: no-repeat;
+    position: relative;
+    vertical-align: middle;
+    display: -moz-inline-stack;
+    zoom: 1;
+    *display: inline;
+}
+
+// =======================================================================//
+// CONNECTING FONTS                                                       //
+// =======================================================================//
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic,cyrillic-ext');
+
+/* connecting local fonts */
+@mixin font-face($font-family, $file-path) {
+
+    // Use http://everythingfonts.com/font-face
+    @font-face {
+        font-family: $font-family;
+        src: url('../../fonts/' + $file-path + '/' + $file-path + '.woff2') format('woff2'),
+             url('../../fonts/' + $file-path + '/' + $file-path + '.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+// =======================================================================//
+//    BACKGROUND IMAGES RESPONSIVE MIX-IN                                 //
+// =======================================================================//
+// uncomment for use responcive background, use "gulp imgresize" for create different size img.
+
+// @mixin bg-img ($bg-color, $file-name, $file-exp, $bg-size) {
+//     @media only screen and (min-width: 1301px) {
+//         background:$bg-color url('../images/' + $file-name + '.' + $file-exp) center center no-repeat;
+//         background-size: $bg-size;
+//     }
+//     @media only screen and (max-width: 1300px) {
+//         background:$bg-color url('../images/' + $file-name + '_dt' + '.' + $file-exp) center center no-repeat;
+//         background-size: $bg-size;
+//     }
+//     @media only screen and (max-width: 991px) {
+//         background:$bg-color url('../images/' + $file-name + '_md' + '.' + $file-exp) center center no-repeat;
+//         background-size: $bg-size;
+//     }
+//     @media only screen and (max-width: 481px) {
+//         background:$bg-color url('../images/' + $file-name + '_xs' + '.' + $file-exp) center center no-repeat;
+//         background-size: $bg-size;
+//     }
+// }
+
+// Add local fonts from mixin
+@include font-face(droidsans, 'droidsans');
+
+
+/* Identify Fonts*/
+// $main-font: 'droidsans', sans-serif;
+$main-font: 'Open Sans', sans-serif;
+
+/* Font mixin */
+@mixin font-type($font-size, $line-height, $letter-spacing, $color) {
+    font-size: $font-size;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+    color: $color;
+}
+
+
+// =======================================================================//
+// RESPONCIVE MIX IN                                                      //
+// =======================================================================//
+
+/*for add responcive rules use @include respond-to(sm) {}  */
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: 320px) { @content; }
+  }
+  @else if $media == xs {
+    @media only screen and (max-width: 481px) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (max-width: 767px) { @content; }
+  }
+  @else if $media == md {
+   @media only screen and(max-width: 991px) { @content; }
+  }
+  @else if $media == lg {
+   @media only screen and (max-width: 1199px) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (max-width: 1300px) { @content; }
+  }
+  @else {
+      @media only screen and (max-width: $media) { @content; }
+  }
+}
+
+
+// =======================================================================//
+//    System-wide configuration classes and the vertical rhythm           //
+// =======================================================================//
+
+html {
+    font-family: $main-font;
+    font-size: 16px;
+}
+
+body {
+    /* VEBKIT FONT SMOOTHINF */
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+button, select {-webkit-appearance: none;}
+
+/* ALL IMAGE ARE RESPONCIVE */
+img {width: 100%; height: auto;}
+
+/* IMG STYLE
+----------------
+.img-responsive -
+.img-rounded -
+.img-circle -
+.img-thumbnail -
+*/
+
+
+/* SYSTEM MODIFICATORS */
+.np {padding: 0;} /* no padding */
+.np-l {padding-left:0;} /* no padding left */
+.np-r {padding-right:0;} /* no padding right */
+.dp {padding:0 30px;} /* double padding */
+.nm {margin:0;} /* no margin */
+.nm-b {margin-bottom:0;} /* no margin bottom */
+
+/* FLOAT CLEAR */
+.clear {clear: both;}
+
+// text align
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+// =======================================================================//
+// TYPOGRAPHY STYLE                                                       //
+// =======================================================================//
+
+/* PARAGRAPH */
+p {}
+
+/* <p> like H */
+.lead {}
+
+/* PARAGRAPH STYLE
+----------------
+<p> color modificators
+.text-muted {}
+.text-primary {}
+.text-success {}
+.text-info {}
+.text-warning {}
+.text-danger {}
+
+<p> with background in BLOCK mode
+.bg-primary {}
+.bg-success {}
+.bg-info {}
+.bg-warning {}
+.bg-danger {}
+
+use a system class alignment <p>
+.text-left {}
+.text-center {}
+.text-right {}
+.text-justify {}
+*/
+
+small, .small {}
+strong, .strong {}
+em, .em {}
+
+a, .hamburger{
+    &:hover, &:focus, &:active, &:active:focus {outline: none;}
+    text-decoration: none;
+
+    &:hover {}
+    &:active {}
+    transition: all 0.3s;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    font-family: $main-font;
+}
+
+h1, .h1 {
+
+}
+
+h2, .h2 {
+
+}
+
+h3, .h3 {
+
+}
+
+h4, .h4 {
+
+}
+
+h5, .h5 {
+
+}
+
+h6, .h6 {
+
+}
+
+/* address */
+address, .address {
+
+    strong {}
+    a {}
+}
+
+/* for some reason use title="" inside <abbr>.
+   Add .initialism for make font smaller. */
+abbr, .abbr {
+
+}
+
+/* add .blockquote-reverse for right align. */
+blockquote {
+
+    /* use <p> inside <blockquote>  */
+    p {}
+
+    footer {}
+
+    /* <cite title="Source Title">Source Title</cite> */
+    cite {}
+}
+
+/* System class for list .list-unstyled and .list-inline */
+ol, ul {
+    margin-top: 0;
+    li {}
+}
+
+ol {
+    li {}
+}
+
+
+/* ocation of terms and their definitions side by side in a line using .dl-horizontal () */
+dl {
+    dt {}
+    dd {}
+}
+
+/* Styling code and markings */
+pre {}
+code {}
+kbd {}
+mark {}
+
+// lists
+.list-inline {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    li {
+        display: inline-block;
+    }
+}
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+    li {
+        padding-left: 0;
+        list-style: none;
+    }
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+// =======================================================================//
+// FORMS                                                                  //
+// =======================================================================//
+
+// PLACEHOLDER MIX-IN
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+};
+
+/*  LABELS (for .form-group)
+----------------
+.has-success
+.has-warning
+.has-error
+.has-feedback - for icons*/
+
+    label {}
+
+/*
+HTML5 input types: text, text, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, и color.
+
+*/
+
+.form {
+
+    .form-group {
+
+        .control-label {
+
+        }
+
+        .input_wrapper {
+
+            select {}
+        }
+
+        .input-group-addon {}
+
+        /* The general style input, textarea, select */
+        .form-control {
+
+            /* hack anti mobile zoom */
+            font-size: 16px;
+
+            &:focus,
+            &:active:focus {
+                border: none;
+                box-shadow: none;
+                outline: none;
+            }
+        }
+
+        /* Style for checkboxes*/
+        .checkbox {
+            /* use .checkbox-inline for inline checkbox*/
+            label {
+                input {
+
+                }
+            }
+        }
+        /* Style for radiobutton */
+        .radio {
+            /* use .radio-inline for inline radiobutton */
+            label {
+                input {
+
+                }
+            }
+        }
+
+        .form-control-static {
+
+        }
+
+        .help-block {
+
+        }
+    }
+
+    .has-success {
+        .control-label {}
+        .form-control {}
+    }
+    .has-warning {
+        .control-label {}
+        .form-control {}
+    }
+    .has-error {
+        .control-label {}
+        .form-control {}
+    }
+
+    .has-feedback {
+        .glyphicon {
+
+        }
+    }
+}
+
+// =======================================================================//
+// BUTTONS                                                                //
+// =======================================================================//
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+}
+
+.btn-cta {
+    text-align: center;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #ffffff;
+    border-style: solid;
+    font-family: $main-font;
+    color: #ffffff;
+    font-size: 14px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 400;
+    text-align: left;
+    &:hover, &:active, &:focus, &:active:focus {}
+}
+
+.btn-default {
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {}
+
+}
+
+.btn-primary {
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
+
+    }
+}
+
+.btn-second {
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
+
+    }
+}
+
+.btn-next {
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
+
+
+    }
+}

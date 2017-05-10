@@ -1,0 +1,13 @@
+/**
+ *  webapp
+ *  (c) v <v>
+ */
+
+$base-path: '../' !default;
+$icon-font-path: '../fonts/bootstrap/';
+
+@import 'base/normalize';
+@import 'base/settings';
+@import 'base/components/burger';
+@import 'base/img-sprite';
+@import 'base/layout';
