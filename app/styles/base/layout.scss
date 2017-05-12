@@ -127,7 +127,7 @@
 // jumbo
 .jumbo {
     font-family: $main-font;
-    background: url(../images/tr_jumbo-bg.jpg) no-repeat center center;
+    background: #e68d51 url(../images/tr_jumbo-bg.jpg) no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     @include respond-to(860px) {
@@ -366,6 +366,7 @@
         flex-wrap: wrap;
         align-items: center;
         min-height: 500px;
+        background-color: #000205;
         background-image: url(../images/super-bg.jpg);
         background-size: cover;
         background-repeat: no-repeat;
@@ -564,6 +565,7 @@
     }
     font-family: $main-font;
     min-height: 500px;
+    background-color: #663209;
     background-image: url(../images/training-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -722,6 +724,7 @@
 // order
 .order {
     font-family: $main-font;
+    background-color: #ab677f;
     background-image: url(../images/order-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -892,14 +895,14 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1050;
+    z-index: 99999999999;
     display: none;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     outline: 0;
     background: rgba(0, 0, 0, 0.7);
     @include respond-to(980px) {
-        top: 56px;
+        top: 0;
     }
     .open {
         overflow-x: hidden;
