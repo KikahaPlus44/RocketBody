@@ -92,9 +92,13 @@
            will-change: transform;
            transition: transform 0.3s ease-in-out;
            z-index: -1;
+           pointer-events: none;
+           opacity: 0;
         }
         &.is-active {
             transform: translateY(0);
+            pointer-events: all;
+            opacity: 1;
         }
     }
     &-nav {
@@ -121,6 +125,9 @@
         line-height: 36px;
         @include respond-to(1230px){
            padding: 15px 15px;
+        }
+        @media (max-device-width: 800px) and (orientation: landscape) {
+            line-height: 20px;
         }
     }
 }
@@ -891,7 +898,7 @@
     font-family: $main-font;
     display: none;
     position: fixed;
-    top: 66px;
+    top:0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -900,13 +907,11 @@
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     outline: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    overflow-y: auto;
     @include respond-to(980px) {
         top: 0;
-    }
-    .open {
-        overflow-x: hidden;
-        overflow-y: auto;
     }
     .form-control {
         border-radius: 10px;
@@ -946,7 +951,8 @@
 .modal-dialog {
     max-width: 320px;
     margin: 0 auto;
-    margin-top: calc(50vh - 150px);
+    margin-top: calc(50vh - 200px);
+    transform: translate(0, -50%);
     text-align: center;
     @include respond-to(860px) {
         padding-top: 30px;
@@ -974,5 +980,4 @@
 .modal.fade .modal-dialog {
     -webkit-transition: -webkit-transform .3s ease-out;
     transition: transform .3s ease-out;
-    transform: translate(0,-25%);
 }
